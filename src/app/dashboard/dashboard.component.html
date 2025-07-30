@@ -1,0 +1,59 @@
+<div class="container">
+    
+    <div class="row">
+        <div class="row mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <app-leave-balance></app-leave-balance>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h1> ลาที่รออนุมัติ <br>{{ pendingRequestsCount }} รายการ</h1>
+                </div>
+
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h1>ลาที่อนุมัติแล้ว <br>{{ totalLeaveDay }} วัน</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h5>รายการล่าสุด</h5>
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>วันที่</th>
+                        <th>ประเภท</th>
+                        <th>จำนวนวัน</th>
+                        <th>สถานะ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let leave of leaveData">
+                        <td>{{ formatDateRange(leave.start_date, leave.end_date) }}</td>
+                        <td>{{ leave.leave_type_id }}</td>
+                        <td>{{ calculateDate(leave.start_date, leave.end_date) }}</td>
+                        <td>
+                            <span
+                                [ngClass]="{' bg-success-subtle text-success': leave.status === 'อนุมัติแล้ว',' bg-danger-subtle text-danger': leave.status === 'ไม่อนุมัติ', ' bg-warning-subtle text-warning': leave.status === 'รออนุมัติ'}">
+                                {{ leave.status }}
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

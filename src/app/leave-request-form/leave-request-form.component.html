@@ -1,0 +1,49 @@
+<div class="container">
+    <h1><b>แบบฟอร์มขอลางาน</b></h1>
+    <form>
+        <div class="row">
+            <div class="row">
+                <div class="form-group mb-3">
+                    <label for="leaveType">ประเภทการลา</label>
+                    <select class="form-control" id="leaveType" [(ngModel)]="leaveData.leave_type_id" name="leaveType" required>
+                        <option [value]="1">ลาพักร้อน</option>
+                        <option [value]="2">ลาป่วย</option>
+                        <option [value]="3">ลากิจ</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        <label for="startDate">วันที่เริ่มลา</label>
+                        <input type="date" class="form-control" id="startDate" [(ngModel)]="leaveData.start_date" name="startDate" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        <label for="endDate">วันที่สิ้นสุด</label>
+                        <input type="date" class="form-control" id="endDate" [(ngModel)]="leaveData.end_date" name="endDate" required>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group mb-3">
+                    <label for="reason">เหตุผล</label>
+                    <textarea name="text" class="form-control" id="reason" [(ngModel)]="leaveData.reason" name="reason"></textarea>
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+        <div class="text-end mt-3">
+            <button type="button" class="btn btn-outline-secondary me-2">ยกเลิก</button>
+            <button type="button" class="btn btn-primary " (click)="leaveRequest() ">ส่งคำขอลา</button>
+
+        </div>
+
+    </form>
+</div>

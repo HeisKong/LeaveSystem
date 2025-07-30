@@ -1,0 +1,24 @@
+<div class="card mb-4">
+    <div class="card-body text-center">
+        <button class="btn btn-primary mx-2" [class.active]="selectedMenu === 1" (click)="selectedMenu = 1">
+            แดชบอร์ด
+        </button>
+        <button class="btn btn-primary mx-2" [class.active]="selectedMenu === 2" (click)="selectedMenu = 2">
+            ขออนุญาต
+        </button>
+        <button class="btn btn-primary mx-2" [class.active]="selectedMenu === 3" (click)="selectedMenu = 3">
+            สถิติการลาประจำเดือน
+        </button>
+        <button class="btn btn-primary mx-2" [class.active]="selectedMenu === 4" (click)="selectedMenu = 4">
+            รายการขออนุมัติการลา
+        </button>
+    </div>
+</div>
+
+<div>
+    <app-leave-history *ngIf="selectedMenu === 3"></app-leave-history>
+    <app-admin *ngIf="selectedMenu === 4"></app-admin>
+    <app-leave-request-form *ngIf="selectedMenu === 2"></app-leave-request-form>
+    <app-dashboard *ngIf="selectedMenu === 1"></app-dashboard>
+
+</div>
